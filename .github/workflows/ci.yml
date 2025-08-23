@@ -1,0 +1,42 @@
+name: "React-CI-Pileline/workflow"
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+            
+jobs:
+    build-and-test:
+
+        runs-on: ubuntu-latest
+
+        steps:
+
+            - name: ubnutu update
+              run: sudo apt-get update
+
+            - name: Node.js setup
+              uses: actions/setup-node@v4
+              with:
+                node-version: 22.18.0
+
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Install dependecies
+              run: npm install
+
+            - name: Run tests
+              run: npm test
+
+            - name: Build project
+              run: npm run build
+
+            - name: Upload production-ready build files
+              uses: actions/upload-artifact@v4
+              with:
+                name: build           # <--- This must match the CD workflow
+                path: .next
