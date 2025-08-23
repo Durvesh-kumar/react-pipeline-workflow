@@ -40,7 +40,7 @@ jobs:
               with:
                 name: build           # <--- This must match the CD workflow
                 path: |
-            .next
-            public
-            package.json
-            next.config.js
+                  .next
+                  public
+                  package.json
+                  next.config.js
