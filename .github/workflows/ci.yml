@@ -43,3 +43,6 @@ jobs:
                   .next
                   package.json
                   next.config.js
+                  app
+                  public
+                  node_modules
